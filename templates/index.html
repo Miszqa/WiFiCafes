@@ -1,0 +1,29 @@
+<!<!DOCTYPE html>
+<html>
+<head>
+    <title>Cafes in Gdynia</title>
+    <style>
+        body { font-family: Arial; margin: 40px; }
+        .cafe { margin-bottom: 20px; padding: 10px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>Cafes in Gdynia</h1>
+    {% for cafe in cafes %}
+        <div class="cafe">
+            <strong>{{ cafe.name }}</strong><br>
+            {{ cafe.location }}<br>
+            <form action="/delete/{{ cafe.id }}" method="post">
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+    {% endfor %}
+    <hr>
+    <h2>Add a New Cafe</h2>
+    <form action="/add" method="post">
+        <input name="name" placeholder="Cafe Name" required><br>
+        <input name="location" placeholder="Location" required><br>
+        <button type="submit">Add Cafe</button>
+    </form>
+</body>
+</html>
